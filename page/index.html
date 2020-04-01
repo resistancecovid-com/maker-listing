@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Covid maker directory</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="app">
+	<section class="section">
+		<h1 class="title is-1">
+			Covid maker local group list
+		</h1>
+
+		<table class="table is-narrow is-striped is-bordered is-fullwidth is-hoverable">
+			<thead>
+			<tr>
+				<th>Label</th>
+				<th>Type</th>
+				<th>Product</th>
+				<th>Technology</th>
+				<th>Certifications</th>
+				<th>Validated</th>
+				<th>Accepted in some hospital</th>
+				<th>Spoken language</th>
+				<th>Country</th>
+				<th>Area</th>
+				<th>Sub area</th>
+				<th>Sub sub area</th>
+				<th>Online link</th>
+				<th>Product form request</th>
+				<th>Supplier form</th>
+				<th>Maker form</th>
+				<th>Provided product for</th>
+				<th>Last data update</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr v-for="row in rows">
+				<th>{{ row.label }}</th>
+				<th>{{ row.type }}</th>
+				<th>{{ row.product | joinArray }}</th>
+				<th>{{ row.technology | joinArray }}</th>
+				<th>{{ row.certifications | joinArray }}</th>
+				<th>{{ row.validated | joinArray }}</th>
+				<th>{{ row.accepted_hospital | joinArray }}</th>
+				<th>{{ row.language | joinArray }}</th>
+				<th>{{ row.countries | joinArray }}</th>
+				<th>{{ (row.area ? row.area : '-') | joinArray }}</th>
+				<th>{{ (row['sub-area'] ? row['sub-area'] : '-') | joinArray }}</th>
+				<th>{{ (row['sub-sub-area'] ? row['sub-sub-area'] : '-') | joinArray }}</th>
+				<th>
+					<a :href="row.website">
+						{{ row.website }}
+					</a>
+				</th>
+				<th>
+					<a :href="row.product_request_form">
+						{{ row.product_request_form }}
+					</a>
+				</th>
+				<th>
+					<a :href="row.supplier_form">
+						{{ row.supplier_form }}
+					</a>
+				</th>
+				<th>
+					<a :href="row.maker_form">
+						{{ row.maker_form }}
+					</a>
+				</th>
+				<th>{{ row.product_for }}</th>
+				<th>{{ row.last_update }}</th>
+			</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+
+
+<script>
+
+	axios.get('/data/data.json')
+	     .then(function (response) {
+		     app.rows = response.data;
+	     })
+	     .catch(function (error) {
+		     // handle error
+		     alert('Error on data loading: ' + error);
+	     })
+	     .then(function (response) {
+		     app.loader = false;
+	     });
+	
+	Vue.filter('joinArray', function (value) {
+		if (Array.isArray(value))
+		{
+			return value.join(', ');
+		}
+
+		return value;
+	});
+	
+	var app = new Vue({
+		el: '#app',
+		data: {
+			loader: true,
+			message: 'Hello Vue !',
+			rows: [],
+		}
+	})
+</script>
+</body>
+</html>

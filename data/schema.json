@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+	"type": "object",
+	"properties": {
+	  "label": {
+		"type": "string"
+	  },
+	  "type": {
+		"type": "string",
+		"enum": [
+		  "maker",
+		  "research",
+		  "supplier",
+		  ""
+		]
+	  },
+	  "product": {
+		"type": [
+		  "string",
+		  "array"
+		],
+		"items": {
+		  "type": "string",
+		  "enum": [
+			"faceshield",
+			"print",
+			"mask",
+			"gown",
+			"respirator"
+		  ]
+		}
+	  },
+	  "technology": {
+		"type": "string",
+		"enum": [
+		  "3d",
+		  "",
+		  "sewing"
+		]
+	  },
+	  "certifications": {
+		"type": "string",
+		"enum": [
+		  "yes",
+		  "no",
+		  "ongoing",
+		  "partial",
+		  "unknown"
+		]
+	  },
+	  "validated": {
+		"type": "string",
+		"enum": [
+		  "yes",
+		  "no",
+		  "ongoing",
+		  "partial",
+		  "unknown"
+		]
+	  },
+	  "accepted_hospital": {
+		"type": "string",
+		"enum": [
+		  "yes",
+		  "no",
+		  "ongoing",
+		  "partial",
+		  "unknown"
+		]
+	  },
+	  "language": {
+		"type": [
+		  "string",
+		  "array"
+		],
+		"items": {
+		  "type": "string"
+		}
+	  },
+	  "countries": {
+		"type": [
+		  "string",
+		  "array"
+		],
+		"items": {
+		  "type": "string"
+		}
+	  },
+	  "area": {
+		"type": [
+		  "string",
+		  "integer"
+		]
+	  },
+	  "sub-area": {
+		"type": "string"
+	  },
+	  "sub-sub-area": {
+		"type": "string"
+	  },
+	  "website": {
+		"type": "string"
+	  },
+	  "product_request_form": {
+		"type": "string"
+	  },
+	  "supplier_form": {
+		"type": "string"
+	  },
+	  "maker_form": {
+		"type": "string"
+	  },
+	  "product_for": {
+		"type": "string"
+	  },
+	  "last_update": {
+		"type": "string",
+		"format": "date-time"
+	  }
+	},
+	"required": [
+	  "label",
+	  "type",
+	  "product",
+	  "technology",
+	  "language",
+	  "countries",
+	  "website",
+	  "last_update"
+	]
+  }
+}

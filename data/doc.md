@@ -1,11 +1,4 @@
-# csv format
-
-## File format
-* delimiter: **```,```**
-* enclosure: **```"```**
-* escape char: **```\```**
-
-File encoding: **UTF-8**
+# json data structure
 
 ## Field description
 
@@ -24,7 +17,8 @@ File encoding: **UTF-8**
 * website★: - the url to facebook groupe, website, online acceptible content that describe the group
 * product_request_form: - the url to the form or the process to ask for new product
 * supplier_form: - the url of the form or the process to propose some supply
+* maker_form: - the url of the form or the process to register as a maker
 * product_for: all, medical, hospital, other - for which structure the maker do it
 * last_update: 2020-04-02T18:36:36+01:00:00 - ISO 8601 datetime of the lat update of this record
 
-★ mean several record possible, value will be splitted with a ```|```
+★ mean several record possible and an array will be used
