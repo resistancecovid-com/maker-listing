@@ -27,7 +27,11 @@
 			<ul>
 				<li>
 					<input id="validation" type="checkbox" v-model="filter.validation" />
-					<label for="validation">Validation & hospital</label>
+					<label for="validation">Show validation & hospital</label>
+				</li>
+				<li>
+					<label for="country">Country</label>
+					<input id="country" type="input" v-model="filter.country" />
 				</li>
 			</ul>
 		</div>
@@ -47,7 +51,6 @@
 				<th>Area</th>
 				<th>Sub area</th>
 				<th>Sub sub area</th>
-				<th>Online link</th>
 				<th>Product form request</th>
 				<th>Supplier form</th>
 				<th>Maker form</th>
@@ -56,41 +59,45 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr v-for="row in rows">
-				<th>{{ row.label }}</th>
-				<th>{{ row.type }}</th>
-				<th>{{ row.product | joinArray }}</th>
-				<th>{{ row.technology | joinArray }}</th>
-				<th v-if="filter.validation">{{ row.certifications | joinArray }}</th>
-				<th v-if="filter.validation">{{ row.validated | joinArray }}</th>
-				<th v-if="filter.validation">{{ row.accepted_hospital | joinArray }}</th>
-				<th>{{ row.language | joinArray }}</th>
-				<th>{{ row.countries | joinArray }}</th>
-				<th>{{ (row.area ? row.area : '-') | joinArray }}</th>
-				<th>{{ (row['sub-area'] ? row['sub-area'] : '-') | joinArray }}</th>
-				<th>{{ (row['sub-sub-area'] ? row['sub-sub-area'] : '-') | joinArray }}</th>
-				<th>
+			<tr v-if="rows.length == 0">
+				<td colspan="17">
+					No results
+				</td>
+			</tr>
+			<tr v-for="row in rowsFiltered">
+				<td>
 					<a :href="row.website">
-						website or facebook
+						{{ row.label }}
 					</a>
-				</th>
-				<th>
+				</td>
+				<td>{{ row.type }}</td>
+				<td>{{ row.product | joinArray }}</td>
+				<td>{{ row.technology | joinArray }}</td>
+				<th v-if="filter.validation">{{ row.certifications | joinArray }}</td>
+				<th v-if="filter.validation">{{ row.validated | joinArray }}</td>
+				<th v-if="filter.validation">{{ row.accepted_hospital | joinArray }}</td>
+				<td>{{ row.language | joinArray }}</td>
+				<td>{{ row.countries | joinArray }}</td>
+				<td>{{ (row.area ? row.area : '-') | joinArray }}</td>
+				<td>{{ (row['sub-area'] ? row['sub-area'] : '-') | joinArray }}</td>
+				<td>{{ (row['sub-sub-area'] ? row['sub-sub-area'] : '-') | joinArray }}</td>
+				<td>
 					<a :href="row.product_request_form">
 						Request product
 					</a>
-				</th>
-				<th>
+				</td>
+				<td>
 					<a :href="row.supplier_form">
 						Provide supply
 					</a>
-				</th>
-				<th>
+				</td>
+				<td>
 					<a :href="row.maker_form">
 						Become maker
 					</a>
-				</th>
-				<th>{{ row.product_for }}</th>
-				<th>{{ row.last_update | formatDate }}</th>
+				</td>
+				<td>{{ row.product_for }}</td>
+				<td>{{ row.last_update | formatDate }}</td>
 			</tr>
 			</tbody>
 		</table>
@@ -113,8 +120,7 @@
 	     });
 
 	Vue.filter('joinArray', function (value) {
-		if (Array.isArray(value))
-		{
+		if (Array.isArray(value)) {
 			return value.join(', ');
 		}
 
@@ -124,15 +130,28 @@
 	Vue.filter('formatDate', function (value) {
 		return moment(value).format('DD/MM/YYYY h:mm');
 	});
-	
+
 	var app = new Vue({
 		el: '#app',
+		computed: {
+			rowsFiltered: function () {
+				if (this.filter.country.length > 0)
+				{
+					return this.rows.filter(function (row, index) {
+						return row.countries.includes(app.filter.country);
+					})
+				}
+
+				return this.rows;
+			}
+		},
 		data: {
 			loader: true,
 			message: 'Hello Vue !',
 			rows: [],
 			filter: {
 				validation: false,
+				country: '',
 			}
 		}
 	})
