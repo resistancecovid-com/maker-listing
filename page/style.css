@@ -1,0 +1,19 @@
+table.is-loading {
+	position: relative;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+table.is-loading:after {
+	content: '';
+	border: solid 2px transparent;
+	position: absolute;
+	top: calc(50% - (5em / 2));
+	left: calc(50% - (5em / 2));
+	border-top-color: black;
+	border-right-color: black;
+	border-radius: 100%;
+	width: 5em;
+	height: 5em;
+	animation: fa-spin .5s infinite linear;
+}

@@ -11,6 +11,7 @@
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+	<link rel="stylesheet" href="/page/style.css">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -22,21 +23,27 @@
 			Covid maker local group list
 		</h1>
 
-		<div>
-			Filter
-			<ul>
-				<li>
-					<input id="validation" type="checkbox" v-model="filter.validation" />
-					<label for="validation">Show validation & hospital</label>
-				</li>
-				<li>
-					<label for="country">Country</label>
-					<input id="country" type="input" v-model="filter.country" />
-				</li>
-			</ul>
+		<div class="card">
+			<header class="card-header">
+				<p class="card-header-title">
+					Filter
+				</p>
+			</header>
+			<div class="card-content">
+				<div class="control">
+					<div class="field">
+						<input id="validation" type="checkbox" v-model="filter.validation" />
+						<label for="validation">Show validation & hospital</label>
+					</div>
+					<div class="field">
+						<label for="country">Country</label>
+						<input id="country" type="input" v-model="filter.country" />
+					</div>
+				</div>
+			</div>
 		</div>
 
-		<table class="table is-narrow is-striped is-bordered is-fullwidth is-hoverable">
+		<table class="table is-narrow is-striped is-bordered is-fullwidth is-hoverable" :class="{'is-loading': loader}">
 			<thead>
 			<tr>
 				<th>Label</th>
@@ -73,9 +80,9 @@
 				<td>{{ row.type }}</td>
 				<td>{{ row.product | joinArray }}</td>
 				<td>{{ row.technology | joinArray }}</td>
-				<th v-if="filter.validation">{{ row.certifications | joinArray }}</td>
-				<th v-if="filter.validation">{{ row.validated | joinArray }}</td>
-				<th v-if="filter.validation">{{ row.accepted_hospital | joinArray }}</td>
+				<td v-if="filter.validation">{{ row.certifications | joinArray }}</td>
+				<td v-if="filter.validation">{{ row.validated | joinArray }}</td>
+				<td v-if="filter.validation">{{ row.accepted_hospital | joinArray }}</td>
 				<td>{{ row.language | joinArray }}</td>
 				<td>{{ row.countries | joinArray }}</td>
 				<td>{{ (row.area ? row.area : '-') | joinArray }}</td>
@@ -138,7 +145,7 @@
 				if (this.filter.country.length > 0)
 				{
 					return this.rows.filter(function (row, index) {
-						return row.countries.includes(app.filter.country);
+						return row.countries.includes(app.filter.country.toUpperCase());
 					})
 				}
 
