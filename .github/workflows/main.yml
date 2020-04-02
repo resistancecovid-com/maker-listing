@@ -9,6 +9,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Validate data
-        uses: 3scale/ajv
+        image: 3scale/ajv
         with:
           args: --errors=text -s data/schema.json -d data/data.json
