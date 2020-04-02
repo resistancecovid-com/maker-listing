@@ -3108,5 +3108,18 @@
 	"website": "https://www.facebook.com/groups/1055113261540892/",
 
 	"last_update": "2020-04-01T18:04:00+01:00"
+  },
+  {
+	"label": "covid 3d",
+	"type": "platform",
+	"product": ["designed","maker"],
+	"technology": ["3d","sewing"],
+	"certifications": "unknown",
+	"validated": "yes",
+	"accepted_hospital": "yes",
+	"language": "fr",
+	"countries": "FRA",
+	"website": "https://covid3d.org",
+	"last_update": "2020-04-02T08:40:00+01:00",
   }
 ]
