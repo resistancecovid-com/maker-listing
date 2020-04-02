@@ -6,8 +6,5 @@ The purpose of this project is to list maker around the group, that can provide 
 
 To add a new group, create a pull request or if you don't know how, just create a new issue.
 
-[Show the list of local groups](page/index.html)
-
-
-Thanks
+To test the data : docker run -it --rm -v $(pwd):/toto -w /toto 3scale/ajv --errors=text -s data/schema.json -d data/data.json
 
