@@ -75,17 +75,17 @@ lang: en
 				<td>${ (row['sub-area'] ? row['sub-area'] : '-') | joinArray }</td>
 				<td>${ (row['sub-sub-area'] ? row['sub-sub-area'] : '-') | joinArray }</td>
 				<td>
-					<a :href="row.product_request_form">
+					<a v-if="row.product_request_form" :href="row.product_request_form">
 						Request product
 					</a>
 				</td>
 				<td>
-					<a :href="row.supplier_form">
+					<a v-if="row.supplier_form" :href="row.supplier_form">
 						Provide supply
 					</a>
 				</td>
 				<td>
-					<a :href="row.maker_form">
+					<a v-if="row.maker_form" :href="row.maker_form">
 						Become maker
 					</a>
 				</td>
