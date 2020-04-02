@@ -1,0 +1,35 @@
+# building
+source: .
+destination: build
+unpublished: false
+lsi: true
+incremental: true
+
+title: Covid make local group
+
+# plugins
+plugins:
+    - jekyll-default-layout
+    - jekyll-relative-links
+    - jekyll-seo-tag
+
+markdown: kramdown
+
+sass:
+    style: compressed
+
+relative_links:
+    enabled:     true
+    collections: false
+
+# content related
+repository: https://github.com/resistancecovid-com/resistancecovid-com.github.io
+baseurl: /
+url: https://covid-make.ovh/
+
+navigation:
+    - text: Covid make local group
+      url: /
+
+#paginate: 10
+permalink: pretty

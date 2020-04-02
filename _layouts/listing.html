@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,maximum-scale=2">
+
+	<title>{{ page.title }}</title>
+
+	{% if page.description %}
+		<meta name="description" content="{{page.description}}" />
+		<meta property="og:description" content="{{page.description}}" />
+		<meta name="twitter:description" content="{{page.description}}">
+	{% endif %}
+	<link rel="canonical" href="{{site.url}}{{page.url}}" />
+	<meta property="og:url" content="{{site.url}}{{page.url}}" />
+	<meta name="twitter:url" content="{{site.url}}{{page.url}}" />
+	<meta property="og:site_name" content="{{site.name}}" />
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+
+	<link rel="stylesheet" type="text/css" href="{{ '/assets/style.css?v=' | append: site.github.build_revision | relative_url }}">
+</head>
+<body>
+
+{{ content }}
+
+
+<div class="footer">
+	<a href="https://github.com/resistancecovid-com/resistancecovid-com.github.io">
+		Make some change
+	</a>
+</div>
+
+<script>
+	axios.get('/data/data.json')
+	     .then(function (response) {
+		     app.rows = response.data;
+	     })
+	     .catch(function (error) {
+		     // handle error
+		     alert('Error on data loading: ' + error);
+	     })
+	     .then(function (response) {
+		     app.loader = false;
+	     });
+
+	Vue.filter('joinArray', function (value) {
+		if (Array.isArray(value)) {
+			return value.join(', ');
+		}
+
+		return value;
+	});
+
+	Vue.filter('formatDate', function (value) {
+		return moment(value).format('DD/MM/YYYY h:mm');
+	});
+
+	var app = new Vue({
+		el: '#app',
+		computed: {
+			rowsFiltered: function () {
+				if (this.filter.country.length > 0)
+				{
+					return this.rows.filter(function (row, index) {
+						return row.countries.includes(app.filter.country.toUpperCase());
+					})
+				}
+
+				return this.rows;
+			}
+		},
+		data: {
+			loader: true,
+			rows: [],
+			filter: {
+				validation: false,
+				country: '',
+			}
+		}
+	})
+</script>
+</body>
+</html>
