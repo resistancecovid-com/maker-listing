@@ -3121,5 +3121,17 @@
 	"countries": "FRA",
 	"website": "https://covid3d.org",
 	"last_update": "2020-04-02T08:40:00+01:00"
+  },
+  {
+	"label": "3D Markers Gironds 33 - covid19,",
+	"type": "maker",
+	"product": "faceshield",
+	"technology": "3d",
+	"language": "fr",
+	"countries": "FRA",
+	"website": "https://www.facebook.com/groups/3DMakers33/",
+	"last_update": "2020-04-02T13:52:00+01:00",
+	"product_request_form": "https://app.smartsheet.com/b/publish?EQBCT=b97b564f9a4046b4af8fd94a8797bab5&fbclid=IwAR0760LUhNL_JM7WdXpuU3GVtoxg3at6p8VifQ465hnzyOa5y1kDlZynuhI",
+	"maker_form": "https://app.smartsheet.com/b/form/9ab924fbf03546f498759ab901dfde41?fbclid=IwAR3euzLuotqzcFVp5BHMcUx2eEyuuzklmR_NeDz_aU2J6HKaUFkIvMZ-a8o"
   }
 ]
