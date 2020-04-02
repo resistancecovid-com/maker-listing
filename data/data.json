@@ -3112,7 +3112,7 @@
   {
 	"label": "covid 3d",
 	"type": "platform",
-	"product": ["designed","maker"],
+	"product": ["design","faceshield","mask"],
 	"technology": ["3d","sewing"],
 	"certifications": "unknown",
 	"validated": "yes",

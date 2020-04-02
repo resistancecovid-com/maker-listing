@@ -29,17 +29,19 @@
 			"print",
 			"mask",
 			"gown",
-			"respirator"
+			"respirator",
+			"design"
 		  ]
 		}
 	  },
 	  "technology": {
-		"type": "string",
-		"enum": [
-		  "3d",
-		  "",
-		  "sewing"
-		]
+		"type": [
+		  "string",
+		  "array"
+		],
+		"items": {
+		  "type": "string"
+		}
 	  },
 	  "certifications": {
 		"type": "string",
