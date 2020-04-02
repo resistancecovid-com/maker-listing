@@ -6,8 +6,8 @@ jobs:
         container: 3scale/ajv
 
     steps:
-        -   name: Check out repository code
-            uses: actions/checkout@v2
+        - name: Check out repository code
+          uses: actions/checkout@v2
 
-        -   name: Validate data
-            run: ajv --errors=text -s data/schema.json -d data/data.json
+        - name: Validate data
+          run: ajv --errors=text -s data/schema.json -d data/data.json
