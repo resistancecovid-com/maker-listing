@@ -1,6 +1,5 @@
 # building
 source: .
-destination: build
 unpublished: false
 lsi: true
 incremental: true
