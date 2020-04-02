@@ -44,34 +44,13 @@
 		}
 	  },
 	  "certifications": {
-		"type": "string",
-		"enum": [
-		  "yes",
-		  "no",
-		  "ongoing",
-		  "partial",
-		  "unknown"
-		]
+		"$ref": "#/definitions/certification"
 	  },
 	  "validated": {
-		"type": "string",
-		"enum": [
-		  "yes",
-		  "no",
-		  "ongoing",
-		  "partial",
-		  "unknown"
-		]
+		"$ref": "#/definitions/certification"
 	  },
 	  "accepted_hospital": {
-		"type": "string",
-		"enum": [
-		  "yes",
-		  "no",
-		  "ongoing",
-		  "partial",
-		  "unknown"
-		]
+		"$ref": "#/definitions/certification"
 	  },
 	  "language": {
 		"type": [
@@ -121,6 +100,12 @@
 	  "last_update": {
 		"type": "string",
 		"format": "date-time"
+	  },
+	  "map": {
+		"type": "array",
+		"items": {
+		  "$ref": "#/definitions/geoloc"
+		}
 	  }
 	},
 	"required": [
@@ -133,5 +118,33 @@
 	  "website",
 	  "last_update"
 	]
+  },
+
+  "definitions": {
+	"geoloc": {
+	  "type": "object",
+	  "properties": {
+		"latitude": {
+		  "type": "string"
+		},
+		"longitude": {
+		  "type": "string"
+		}
+	  },
+	  "required": [
+		"latitude",
+		"longitude"
+	  ]
+	},
+	"certification": {
+	  "type": "string",
+	  "enum": [
+		"yes",
+		"no",
+		"ongoing",
+		"partial",
+		"unknown"
+	  ]
+	}
   }
 }
