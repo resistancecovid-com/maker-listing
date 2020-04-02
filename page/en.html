@@ -60,20 +60,20 @@ lang: en
 			<tr v-for="row in rowsFiltered">
 				<td>
 					<a :href="row.website">
-						{{ row.label }}
+						${ row.label }
 					</a>
 				</td>
-				<td>{{ row.type }}</td>
-				<td>{{ row.product | joinArray }}</td>
-				<td>{{ row.technology | joinArray }}</td>
-				<td v-if="filter.validation">{{ row.certifications | joinArray }}</td>
-				<td v-if="filter.validation">{{ row.validated | joinArray }}</td>
-				<td v-if="filter.validation">{{ row.accepted_hospital | joinArray }}</td>
-				<td>{{ row.language | joinArray }}</td>
-				<td>{{ row.countries | joinArray }}</td>
-				<td>{{ (row.area ? row.area : '-') | joinArray }}</td>
-				<td>{{ (row['sub-area'] ? row['sub-area'] : '-') | joinArray }}</td>
-				<td>{{ (row['sub-sub-area'] ? row['sub-sub-area'] : '-') | joinArray }}</td>
+				<td>${ row.type }</td>
+				<td>${ row.product | joinArray }</td>
+				<td>${ row.technology | joinArray }</td>
+				<td v-if="filter.validation">${ row.certifications | joinArray }</td>
+				<td v-if="filter.validation">${ row.validated | joinArray }</td>
+				<td v-if="filter.validation">${ row.accepted_hospital | joinArray }</td>
+				<td>${ row.language | joinArray }</td>
+				<td>${ row.countries | joinArray }</td>
+				<td>${ (row.area ? row.area : '-') | joinArray }</td>
+				<td>${ (row['sub-area'] ? row['sub-area'] : '-') | joinArray }</td>
+				<td>${ (row['sub-sub-area'] ? row['sub-sub-area'] : '-') | joinArray }</td>
 				<td>
 					<a :href="row.product_request_form">
 						Request product
@@ -89,8 +89,8 @@ lang: en
 						Become maker
 					</a>
 				</td>
-				<td>{{ row.product_for }}</td>
-				<td>{{ row.last_update | formatDate }}</td>
+				<td>${ row.product_for }</td>
+				<td>${ row.last_update | formatDate }</td>
 			</tr>
 			</tbody>
 		</table>
