@@ -21,7 +21,7 @@
   },
   {
 	"label": "covid3d",
-	"type": "maker",
+	"type": "platform",
 	"product": [
 	  "faceshield",
 	  "print"
@@ -47,7 +47,7 @@
   },
   {
 	"label": "#resistancecovid",
-	"type": "maker",
+	"type": "platform",
 	"product": [
 	  "faceshield",
 	  "print"
@@ -3120,6 +3120,6 @@
 	"language": "fr",
 	"countries": "FRA",
 	"website": "https://covid3d.org",
-	"last_update": "2020-04-02T08:40:00+01:00",
+	"last_update": "2020-04-02T08:40:00+01:00"
   }
 ]
